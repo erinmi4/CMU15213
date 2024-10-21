@@ -143,6 +143,7 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
+    /*将异或使用数电中的方法进行化简。*/
   return ~((~(~x & y))  & (~(~y & x)));
 }
 /* 
@@ -152,8 +153,9 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
-
-  return 2;
+    /*只有1符号位即可*/
+    int x = 1;
+  return x << 31;
 
 }
 //2
