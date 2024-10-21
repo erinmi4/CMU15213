@@ -167,7 +167,12 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return 2;
+/*
+ * Tmax + Tmin + 1 = 0 但是 -1 也同样满足（也只有-1）
+ * 所以只需要排除掉-1即可
+ * */
+
+  return !(x + (x + 1) + 1) ^ !(x + 1);
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
