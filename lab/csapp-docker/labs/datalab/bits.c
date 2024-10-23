@@ -211,6 +211,11 @@ int negate(int x) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
+    // F = ~A + ~B ~C 如果ABCD是0到9的区间内
+//    mask = 0x3F;
+//    int A = res >> 3;
+//    int B = res >> 2;
+//    int C = res >> 1;
   return 2;
 }
 /* 
@@ -221,7 +226,12 @@ int isAsciiDigit(int x) {
  *   Rating: 3
  */
 int conditional(int x, int y, int z) {
-  return 2;
+    // 先判断 x 是否为 0，得到一个布尔值
+    int check = !!x; // 如果 x 不为 0，则 check = 1；如果 x 为 0，则 check = 0
+
+    // 根据 check 选择 y 或 z
+    // 使用布尔值的方式构建返回值
+    return (check & y) | ((!check) & z);
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
