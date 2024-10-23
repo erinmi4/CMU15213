@@ -226,13 +226,13 @@ int isAsciiDigit(int x) {
  *   Rating: 3
  */
 int conditional(int x, int y, int z) {
-    // 先判断 x 是否为 0，得到一个布尔值
-    int check = !!x; // 如果 x 不为 0，则 check = 1；如果 x 为 0，则 check = 0
-
-    // 根据 check 选择 y 或 z
-    // 使用布尔值的方式构建返回值
-    return (check & y) | ((!check) & z);
+    //这是一种取巧的方法。
+    int check = !x; // 如果 x 为 0，则 check 为 1；否则为 0
+    int mask = check - 1; // mask 为全1（选择 y）或 0（选择 z）
+    return (mask & y) | (~mask & z); // 选择 y 或 z
 }
+
+
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
  *   Example: isLessOrEqual(4,5) = 1.
