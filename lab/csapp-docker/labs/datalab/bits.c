@@ -183,7 +183,12 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return !(x + (x >> 1) + 1) ;
+    // 创建一个掩码，表示所有奇数位都为1 (0xAA = 0b10101010)
+    int mask = 0xAA; // 10101010 in binary (8位)
+    // 通过移位构造完整的掩码（32位）,用简单掩码生成复杂掩码
+    mask = mask | (mask << 8) | (mask << 16) | (mask << 24); // 0xAAAAAAAA
+    // 检查 x 和掩码的与运算是否等于掩码
+    return !((x & mask) ^ mask);
 }
 /* 
  * negate - return -x 
